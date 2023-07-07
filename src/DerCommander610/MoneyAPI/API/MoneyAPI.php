@@ -55,7 +55,7 @@ class MoneyAPI{
                 }
             }
             function minimum(Player $player){
-                if(MoneyAPI::minimun_money > MoneyAPI::getMoney($player)){
+                if(MoneyAPI::minimum_money > MoneyAPI::getMoney($player)){
                     function(string $playerName){
                         self::setMoney($playerName, 0);
                         Main::getInstance()->money->save();
