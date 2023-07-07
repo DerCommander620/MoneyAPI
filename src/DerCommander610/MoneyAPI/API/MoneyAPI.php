@@ -7,8 +7,7 @@ use pocketmine\player\Player;
 use pocketmine\Server;
 
 class MoneyAPI{
-    public const minimum_money = MoneyAPI::if(money(islessthan(1)));
-
+    public const minimum_money = MoneyAPI::if(money(Server::getInstance()->getPlayerExact($playerName), 0));
     /**
      * function getMoney
      * @param string $playerName
@@ -44,7 +43,7 @@ class MoneyAPI{
     
     public static function if(){
         function money(int $amount, Player $player){
-            function islessthan(int $maximumset){
+            function islessthan(Player $player, int $maximumset){
                 if($amount < $maximumset){
                     return false;
                 }    
