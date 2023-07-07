@@ -43,12 +43,11 @@ class MoneyAPI{
     }
     
     public static function if(){
-        function money(int $amount, Player $player): mixed{
+        function money(int $amount, Player $player){
             function islessthan(int $amount, int $maximumset){
                 if($amount < $maximumset){
                     return false;
-                }
-            return;    
+                }    
             }
             function minimum(Player $player){
                 if(MoneyAPI::minimun_money > MoneyAPI::getMoney($player)){
