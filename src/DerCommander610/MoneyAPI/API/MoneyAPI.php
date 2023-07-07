@@ -48,6 +48,7 @@ class MoneyAPI{
                 if($amount < $maximumset){
                     return false;
                 }
+            return;    
             }
             function minimum(Player $player){
                 if(MoneyAPI::minimun_money > MoneyAPI::getMoney($player)){
