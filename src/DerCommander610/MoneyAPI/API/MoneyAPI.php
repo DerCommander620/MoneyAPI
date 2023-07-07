@@ -61,7 +61,7 @@ class MoneyAPI{
         }
     }
 
-    public static function setMoney(int $amount, string $playerName): mixed{
+    public static function setMoney(int $amount, string $playerName){
         Main::getInstance()->money->set("money.",Main::getInstance()->money->set($playerName,1), $amount);
         Main::getInstance()->money->save();
     }
