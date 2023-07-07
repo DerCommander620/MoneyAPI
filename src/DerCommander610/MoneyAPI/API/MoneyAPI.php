@@ -7,7 +7,9 @@ use pocketmine\player\Player;
 use pocketmine\Server;
 
 class MoneyAPI{
-    const minimum_money = self::if(money(player(Server::getInstance()->getPlayerExact($playerName), islessthan(0,1))));
+    $player = Server::getInstance()->getPlayerExact();
+    
+    const minimum_money = self::if(minimum($player));
     /**
      * function getMoney
      * @param string $playerName
@@ -52,8 +54,8 @@ class MoneyAPI{
             }
             function minimum(Player $player){
                 if(MoneyAPI::minimun_money > MoneyAPI::getMoney($player)){
-                    function(string $playerName, int $amount){
-                        self::setMoney($playerName, $amount);
+                    function(string $playerName){
+                        self::setMoney($playerName, 0);
                         Main::getInstance()->money->save();
                     }
                 ;
