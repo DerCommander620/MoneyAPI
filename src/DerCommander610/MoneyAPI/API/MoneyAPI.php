@@ -7,7 +7,7 @@ use pocketmine\player\Player;
 use pocketmine\Server;
 
 class MoneyAPI{
-    const minimum_money = 0;
+    public const minimum_money = 0;
 
     /**
      * function getMoney
