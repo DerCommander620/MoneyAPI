@@ -56,6 +56,7 @@ class MoneyAPI{
                         Main::getInstance()->money->save();
                     }
                 ;
+            return true;        
             }}
         }
     }
