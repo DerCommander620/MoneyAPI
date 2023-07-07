@@ -1,0 +1,43 @@
+name: MoneyAPI
+version: 1.0.0
+main: DerCommander610\MoneyAPI\Main
+author: DerCommander610
+api: 5.1.3
+
+commands:
+  payall:
+    description: "Pay every Player on the Server"
+    permission: payall.use
+  pay:
+    description: "Pay a player!"
+    permission: pay.use
+  seemoney:
+    description: "§aSee your money or from other Players!"
+    permission: seemoney.use
+  addmoney:
+    description: "§aAdd money to a Player"
+    permission: addmoney.use
+  removemoney:
+    description: "§aRemove Money from a Player!"
+    permission: removemoney.use
+  resetaccount:
+    description: "reset a account balance!"
+    permission: resetaccount.use
+  setmoney:
+    description: "Set Money from a Player"
+    permission: setmoney.use      
+permissions:
+  payall.use:
+    default: true
+  pay.use:
+    default: true
+  seemoney.use:
+    default: true
+  addmoney.use:
+    default: op
+  removemoney.use:
+    default: op
+  resetaccount.use:
+    default: op
+  setmoney.use:
+    default: op                  
