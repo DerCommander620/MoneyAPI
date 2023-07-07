@@ -46,8 +46,8 @@ class MoneyAPI{
     }
     
     public static function if(){
-        function money(int $amount, Player $player){
-            function player(Player $player){
+        function money(int $amount, string $player){
+            function player(string $player){
                 function islessthan(int $amount, int $maximumset){
                     if($amount($player) < $maximumset){
                        return false;
