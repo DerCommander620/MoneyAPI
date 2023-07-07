@@ -42,7 +42,7 @@ class Main extends PluginBase{
                 if(!isset($args[1])){
                     $sender->sendMessage("§cPlease provide an Amount of money!");
                 }else{
-                    $player = Server::getInstance()->getPlayerExact(implode(" ", array_slice($args, 0)));
+                    $player = Server::getInstance()->getPlayerExact($args([0]));
                     $amount = $args([1]);
                     MoneyAPI::pay($player, $amount);
                     $player->sendMessage("§e" . $sender->getName() . " §apaid you §e" . $amount . "$" . "§a!");
@@ -51,7 +51,7 @@ class Main extends PluginBase{
                 break;
             case "seemoney":
                 if(isset($args[0])){
-                    $player = Server::getInstance()->getPlayerExact(implode("",array_slice($args, 0)));
+                    $player = Server::getInstance()->getPlayerExact($args([0]));
                     $amount = MoneyAPI::getMoney($player);
                     $sender->sendMessage(TextFormat::YELLOW . "Player " . $player->getName() . " has the amount of " . TextFormat::GREEN . $amount."$");
                 }else{
@@ -66,7 +66,7 @@ class Main extends PluginBase{
                 if(!isset($args[0])){
                     $sender->sendMessage("§cPlease Provide A Username you want to reset the Money Account!");
                 }else{
-                    $username = Server::getInstance()->getPlayerExact(implode(" ", array_slice($args, 0)));
+                    $username = Server::getInstance()->getPlayerExact($args([0]));
                     MoneyAPI::reset_account($username);
                     $sender->sendMessage(TextFormat::GREEN . $username . "´s account has been successfully reset!");
                     $username->sendMessage("§cYour account was been reset by " . $sender->getName() . " !");
@@ -78,7 +78,7 @@ class Main extends PluginBase{
                     if($data === null){
                         return true;
                     }
-                    $player = $data[0];
+                    $player = Server::getInstance()->getPlayerExact($data[0]);
                     $amount = $data[1];
                     if($player === null){
                         $sander->sendMessage("§cPlease provide a PlayerName!");
@@ -89,8 +89,8 @@ class Main extends PluginBase{
                         $sander->sendMessage("§cPlease enter an amount for set money!");
                     }
                     $player = Server::getInstance()->getPlayerExact($data[0]);
-                    if(!$player){
-                        $sander->sendMessage("§cThis Player is not online!");
+                    if(!$player instanceof Player){
+                        $sander->sendMessage("§cThe Player you entered is not a Player!");
                     }else{
                         $player = Server::getInstance()->getPlayerExact($data[0]);
                         MoneyAPI::setMoney($amount, $player);
@@ -109,11 +109,13 @@ class Main extends PluginBase{
                 if(!isset($args[1])){
                     $sender->sendMessage("§cPlease Enter An Amount of Money You Want To Remove From the player!");
                 }
-                $player = Server::getInstance()->getPlayerExact(implode(" ", array_slice($args, 0)));
+                $player = Server::getInstance()->getPlayerExact($args([0]));
                 $amount = $args([1]);
                 if (!$player) {
                     $sender->sendMessage("§cThe player you entered does not exist or is not online.");
                 }else{
+                    $player = Server::getInstance()->getPlayerExact($args([0]));
+                    $amount = $args([1]);
                     MoneyAPI::removeMoney($player ,$amount);
                     $sender->sendMessage("§eYou have removed §6". $amount. "$ §r§eFrom the player: §6" . $player); 
                 }
@@ -125,11 +127,13 @@ class Main extends PluginBase{
                 if(!isset($args[1])){
                     $sender->sendMessage("§cPlease Enter An Amount of Money You Want To Remove From the player!");
                 }
-                $player = Server::getInstance()->getPlayerExact(implode(" ", array_slice($args, 0)));
+                $player = Server::getInstance()->getPlayerExact($args([0]));
                 $amount = $args([1]);
                 if (!$player) {
                     $sender->sendMessage("§cThe player you entered does not exist or is not online.");
                 }else{
+                    $player = Server::getInstance()->getPlayerExact($args([0]));
+                    $amount = $args([1]);
                     MoneyAPI::removeMoney($player ,$amount);
                     $sender->sendMessage("§eYou have added §6". $amount. "$ §r§eto the player: §6" . $player); 
                     }
