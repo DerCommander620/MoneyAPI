@@ -49,12 +49,11 @@ class MoneyAPI{
         function money(int $amount, string $player){
             function player(string $player){
                 function islessthan(int $amount, int $maximumset){
-                    function(string $player){
-                        if($amount($player) < $maximumset){
+                    function(string $playerName){
+                        if($amount($playerName) < $maximumset){
                             return false;
                         }
                     }
-                }
             }
             function minimum(Player $player){
                 if(MoneyAPI::minimum_money > MoneyAPI::getMoney($player)){
