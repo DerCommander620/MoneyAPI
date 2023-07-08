@@ -80,11 +80,12 @@ class Main extends PluginBase{
                     }
                     if($data[1] === null){
                         $sander->sendMessage("§cPlease provide the amount you want to set!")
-                    }else{
-                        if(is_string($data[0])){
-                            $player = Server::getInstance()->getPlayerExact($data[0]);
-                            $amount = $data[1];
-                        }
+                    }
+                    if(is_string($data[0])){
+                        $player = Server::getInstance()->getPlayerExact($data[0]);
+                        $amount = $data[1];
+                        $sander->sendMessage("§aYou have successfully set the money from the account of " . $player->getName() . " to §e" . $amount);
+                        MoneyAPI::setMoney($amount, $player);
                     }
                 });
                 $form->setTitle("§aSet Money");
