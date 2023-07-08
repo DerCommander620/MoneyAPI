@@ -51,7 +51,8 @@ class MoneyAPI{
                 function islessthan(int $amount, int $maximumset){
                     function(string $playerName){
                         if($amount($playerName) < $maximumset){
-                        }
+                            return false;
+                        }   
                     }
                 }       
             }
