@@ -73,30 +73,20 @@ class Main extends PluginBase{
                 }    
                 break;
             case "setmoney":
-                $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-                $form = $api(new CustomForm(function(Player $sander, int $data = null){
-                    if($data === null){
-                        return true;
+                $form = new CustomForm(function(Player $sander, int $data = null){
+                    if($data === null)return false;
+                    if($data[0] === null){
+                        $sander->sendMessage("§cPlease enter a PlayerName!");
                     }
-                    $player = Server::getInstance()->getPlayerExact($data[0]);
-                    $amount = $data[1];
-                    if($player === null){
-                        $sander->sendMessage("§cPlease provide a PlayerName!");
-                        return false;
-                    }
-                    $amount = $data[1];
-                    if($amount === null){
-                        $sander->sendMessage("§cPlease enter an amount for set money!");
-                    }
-                    $player = Server::getInstance()->getPlayerExact($data[0]);
-                    if(!$player instanceof Player){
-                        $sander->sendMessage("§cThe Player you entered is not a Player!");
+                    if($data[1] === null){
+                        $sander->sendMessage("§cPlease provide the amount you want to set!")
                     }else{
-                        $player = Server::getInstance()->getPlayerExact($data[0]);
-                        MoneyAPI::setMoney($amount, $player);
-                        $sander->sendMessage("§aYou successfully set " . TextFormat::YELLOW . $amount . "$ " . TextFormat::GREEN . "on " . $player . "´s Account!");
+                        if(is_string($data[0])){
+                            $player = Server::getInstance()->getPlayerExact($data[0]);
+                            $amount = $data[1];
+                        }
                     }
-                }));
+                });
                 $form->setTitle("§aSet Money");
                 $form->addInput("§aPlease provide a Playername !");
                 $form->addSlider("§aMoney: ", 1, 1000000000, 5);
