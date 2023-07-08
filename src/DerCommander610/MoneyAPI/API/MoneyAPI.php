@@ -51,12 +51,12 @@ class MoneyAPI{
                 function islessthan(int $amount, int $maximumset){
                     function(string $playerName){
                         if($amount($playerName) < $maximumset){
-                            return false;
                         }
                     }
+                }       
             }
             function minimum(Player $player){
-                if(MoneyAPI::minimum_money > MoneyAPI::getMoney($player)){
+                if(MoneyAPI::minimum_money($player) > MoneyAPI::getMoney($player)){
                     function(string $playerName){
                         self::setMoney($playerName, 0);
                         Main::getInstance()->money->save();
