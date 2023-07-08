@@ -79,7 +79,7 @@ class Main extends PluginBase{
                         $sander->sendMessage("§cPlease enter a PlayerName!");
                     }
                     if($data[1] === null){
-                        $sander->sendMessage("§cPlease provide the amount you want to set!")
+                        $sander->sendMessage("§cPlease provide the amount you want to set!");
                     }
                     if(is_string($data[0])){
                         $player = Server::getInstance()->getPlayerExact($data[0]);
